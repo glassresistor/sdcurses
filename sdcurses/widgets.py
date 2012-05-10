@@ -23,17 +23,22 @@ class SMWidget(urwid.WidgetWrap):
 
 class SDCWidget(urwid.WidgetWrap):
 
-    def __init__ (self, location=None, key_id=None):
-        sdc = DataCenter(location=location, key_id=key_id, allow_agent=True, config=DEBUG_CONFIG)
-        vms = sdc.machines()
-        self.items = []
-        for (i, vm) in enumerate(vms):
-            self.items.append(SMWidget(i, '%s - %s' % (vm.name, vm.public_ips[0])))
+    def __init__ (self):
         footer = urwid.AttrMap(urwid.Text('selected:'), 'head')
-        self.listbox = urwid.ListBox(urwid.SimpleListWalker(self.items))
-        self.view = urwid.Frame(urwid.AttrWrap(self.listbox, 'body'), footer=footer)
+        self.view = urwid.Frame(urwid.Text('Waiting on Connection....'), footer=footer)
         self.__super.__init__(self.view)
 
+    def set_sdc(self, location, key_id, allow_agent=None):
+        if not allow_agent:
+            allow_agent = True
+        self.sdc = DataCenter(location=location, key_id=key_id, allow_agent=allow_agent, config=DEBUG_CONFIG)
+        vms = self.sdc.machines()
+        items = []
+        for (i, vm) in enumerate(vms):
+            items.append(SMWidget(i, '%s - %s' % (vm.name, vm.public_ips[0])))
+        self.listbox = urwid.ListBox(urwid.SimpleListWalker(items))
+        self.view.set_body(self.listbox)
+        
     def keypress(self, size, key):
         if key is 'enter':
             focus = self.listbox.get_focus()[0].content
