@@ -1,4 +1,4 @@
-Python http-signature
+SDCurses
 =====================
 
 A curses interface for the SmartData Center technology.
