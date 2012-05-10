@@ -24,7 +24,7 @@ class SMWidget(urwid.WidgetWrap):
 class SDCWidget(urwid.WidgetWrap):
 
     def __init__ (self, location=None, key_id=None):
-        sdc = DataCenter(key_id=key_id, allow_agent=True, config=DEBUG_CONFIG)
+        sdc = DataCenter(location=location, key_id=key_id, allow_agent=True, config=DEBUG_CONFIG)
         vms = sdc.machines()
         self.items = []
         for (i, vm) in enumerate(vms):
