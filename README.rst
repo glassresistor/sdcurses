@@ -14,6 +14,7 @@ Requirements
 Usage
 -----
 sdcurses location key_id
+
 ex: sdcurses 'us-sw-1' '/user_id/key/key_id'
 
 Class initialization parameters
