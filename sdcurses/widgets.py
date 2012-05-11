@@ -46,3 +46,16 @@ class SDCWidget(urwid.WidgetWrap):
                 'selected: %s' % str(focus)), 'head'))
         else:
             return self.listbox.keypress(size, key)
+            
+class QuestionWidget(urwid.Edit):
+
+    def __init__(self, text, final_method, *args):
+        self.saved_args = args
+        super(QuestionWidget, self).__init__(text)
+    
+    def keypress(self, size, key):
+        args = self.saved_args
+        if key is 'enter':
+            final_method(args, self.edit_text)
+        else:
+            return key
