@@ -16,7 +16,7 @@ Usage
 -----
 sdcurses location key_id
 
- sdcurses 'us-sw-1' '/user_id/keys/key_id'
+ sdcurses -l us-sw-1 -k /user_id/keys/key_id
 
 Class initialization parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

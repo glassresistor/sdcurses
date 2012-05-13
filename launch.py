@@ -3,4 +3,4 @@
 import sys
 from sdcurses.main import start
 
-sys.exit(start(sys.argv[1:], ))
+sys.exit(start(sys.argv))
