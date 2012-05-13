@@ -1,12 +1,14 @@
 import sys
 import urwid
+
 from .widgets import SDCWidget, QuestionWidget
-from . import DEFAULT_PALETTE
+from .defaults import PALETTE
+
 
 def start(args=sys.argv[1:]):
     location = args.pop(0)
     key_id = args.pop(0)
-    palette = DEFAULT_PALETTE
+    palette = PALETTE
     
     def keystroke (key):
         if key in ('q', 'Q'):
