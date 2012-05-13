@@ -29,7 +29,7 @@ class SDCWidget(urwid.WidgetWrap):
         self.__super.__init__(self.view)
 
     def set_sdc(self, location, key_id, allow_agent=None):
-        if not allow_agent:
+        if allow_agent == None:
             allow_agent = True
         self.sdc = DataCenter(location=location, key_id=key_id, allow_agent=allow_agent, config=DEBUG_CONFIG)
         vms = self.sdc.machines()
