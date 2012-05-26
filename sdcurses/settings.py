@@ -9,9 +9,10 @@ if settings_module:
 else:
     from . import defaults as settings
 
-thismodule = sys.modules[__name__]
+this_module = sys.modules[__name__]
 for (key, value) in settings.__dict__.iteritems():
-    setattr(thismodule, key, value)
+    setattr(this_module, key, value)
+del this_module
     
 if os.environ.get('SDCURSES_KEY_ID'):
    KEY_ID  = os.environ['SDCURSES_KEY_ID']
