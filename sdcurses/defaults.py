@@ -4,3 +4,4 @@ PALETTE = [
     ('head', 'light red', 'black'),
     ]
 
+ALLOW_AGENT = True
